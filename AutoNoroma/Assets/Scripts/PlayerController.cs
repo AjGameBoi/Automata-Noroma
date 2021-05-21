@@ -7,7 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public Text outputText;
     private Rigidbody2D playerRB;
+    public float speed;
+    public float slowSpeed;
     public float jumpForce;
+    private Vector2 movement;
     private int playerLayer, platformLayer;
     private bool jumpAllowed = false;
     private bool jumpOffCouroutineIsRunning = false;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        MoveCharacter(movement);
         JumpIfAllowed();
     }
 
@@ -52,11 +56,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (Distance.x < -swipeRange)
                 {
+                    movement = new Vector2(-1, 0);
                     outputText.text = "Left";
                     stopTouch = true;
                 }
                 else if (Distance.x > swipeRange)
                 {
+                    movement = new Vector2(1, 0);
                     outputText.text = "Right";
                     stopTouch = true;
                 }
@@ -92,11 +98,16 @@ public class PlayerController : MonoBehaviour
 
             if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange )
             {
+                movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), playerRB.velocity.y);
                 outputText.text = "Tap";
             }
         }
     }
 
+    void MoveCharacter(Vector2 direction)
+    {
+        playerRB.AddForce(direction * speed);
+    }
     IEnumerator JumpOff()
     {
         jumpOffCouroutineIsRunning = true;
