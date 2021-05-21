@@ -3566,10 +3566,10 @@ GameObject:
   m_Component:
   - component: {fileID: 638891412}
   - component: {fileID: 638891411}
-  - component: {fileID: 638891410}
   - component: {fileID: 638891409}
   - component: {fileID: 638891408}
   - component: {fileID: 638891413}
+  - component: {fileID: 638891414}
   m_Layer: 0
   m_Name: EnemyAIPr
   m_TagString: Untagged
@@ -3614,27 +3614,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &638891410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638891407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30268d8151c3aa541aca3fe45b0943ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 20
-  walkSpeed: 80
-  cooldownRate: 2
-  currentCoolDownTime: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  bodyCollider: {fileID: 0}
-  bullet: {fileID: 6068167398742852559, guid: 243baf73bd2f8514eba832de1dc48529, type: 3}
 --- !u!212 &638891411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3728,6 +3707,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3522575, y: 0.7775216}
   m_EdgeRadius: 0
+--- !u!114 &638891414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638891407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30268d8151c3aa541aca3fe45b0943ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 8
+  walkSpeed: 5
+  cooldownRate: 2
+  currentCoolDownTime: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  bodyCollider: {fileID: 0}
+  bullet: {fileID: 9144705784715137367, guid: c24d599cda308f149aac183b67dc6a2f, type: 3}
 --- !u!1 &659633566
 GameObject:
   m_ObjectHideFlags: 0
