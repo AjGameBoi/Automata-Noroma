@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3fb18ea824d347b418a3a4a7385490a8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - a Anterobot
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 22ec6f560bbec4a47b8ff0b2896da330, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
