@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [HideInInspector] bool mustPatrol;
     public float jumpForce;
-    public LayerMask groundLayer;
     public float walkSpeed;
-    Rigidbody2D rigidbody;
-    bool mustFlip;
+    public float cooldownRate = 2.0f;
+    [SerializeField]float currentCoolDownTime;
+
+    Transform player;
+
+    public LayerMask groundLayer;
+
+    Rigidbody2D rigidBody;
+
     public Collider2D bodyCollider;
+
+    public GameObject bullet;
+
+    [HideInInspector] bool mustPatrol;
+    bool mustFlip;
+
     int jumpOrNo;
 
     Transform groundCheckPos;
@@ -18,27 +29,29 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         jumpOrNo = Random.Range(0, 100);
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         bodyCollider = GetComponent<BoxCollider2D>();
         groundCheckPos = GetComponentInChildren<Transform>();
         mustPatrol = true;
+
+        currentCoolDownTime = cooldownRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mustPatrol)
+        if (mustPatrol)
         {
-            Debug.Log("Randomized");
-            jumpOrNo = Random.Range(0, 100);
             Patrol();
         }
+        Attack();
     }
 
     private void FixedUpdate()
     {
-        if(mustPatrol)
+        if (mustPatrol)
         {
             mustFlip = Physics2D.OverlapCircle(groundCheckPos.position, 0.1f, groundLayer);
         }
@@ -49,14 +62,17 @@ public class EnemyAI : MonoBehaviour
         if(mustFlip || bodyCollider.IsTouchingLayers(groundLayer))
         {
             Debug.Log("Unsuccessful");
+            jumpOrNo = Random.Range(0, 100);
             Flip();
         }
-        else if(mustFlip && jumpOrNo > 50)
+        /*else if(mustFlip && jumpOrNo > 50)
         {
             Debug.Log("success");
-            rigidbody.AddForce(new Vector2(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
-        }
-        rigidbody.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
+            rigidBody.AddForce(new Vector2(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
+            Debug.Log("Randomized");
+            jumpOrNo = Random.Range(0, 100);
+        }*/
+        rigidBody.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime, rigidBody.velocity.y);
     }
 
     void Flip()
@@ -65,5 +81,15 @@ public class EnemyAI : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         walkSpeed *= -1;
         mustPatrol = true;
+    }
+
+    void Attack()
+    {
+        currentCoolDownTime -= Time.deltaTime;
+        if (currentCoolDownTime < 0)
+        {
+            Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z));
+            currentCoolDownTime = cooldownRate;
+        }
     }
 }
