@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
-    public float lifetime = 2f;
+    public float lifetime = 3f;
     public float speed;
     public float stepRotation = 10f;
+
+    public int damage = 1;
 
     Transform player;
     Vector2 target;
@@ -24,12 +26,22 @@ public class bulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        var direction = transform.position += transform.forward * speed * Time.deltaTime;
 
         lifetime -= Time.deltaTime;
         if(lifetime < 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, target);
+    }
+
+    void DamagePlayer(int damage)
+    {
+        //Playerscript Health, -= damage
     }
 }
