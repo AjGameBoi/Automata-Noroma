@@ -11,7 +11,7 @@ public class homingbulletscript : MonoBehaviour
     public int damage = 1;
 
     Transform player;
-    Vector2 target;
+    Vector3 target;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class homingbulletscript : MonoBehaviour
         target = new Vector2(player.position.x, player.position.y);
 
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, player.rotation, stepRotation);
-        transform.LookAt(target);
+        transform.right = target - transform.position;
     }
 
     // Update is called once per frame

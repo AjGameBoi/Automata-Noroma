@@ -17,7 +17,7 @@ public class bulletScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector3(player.position.x, player.position.y);
+        target = new Vector3(player.position.x, player.position.y, 0);
 
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, player.rotation, stepRotation);
          transform.right = target - transform.position;
@@ -26,18 +26,13 @@ public class bulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var direction = transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.right * speed * Time.deltaTime;
 
         lifetime -= Time.deltaTime;
         if(lifetime < 0)
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(transform.position, target);
     }
 
     void DamagePlayer(int damage)
