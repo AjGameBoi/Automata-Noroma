@@ -3627,11 +3627,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 20
+  walkSpeed: 80
+  cooldownRate: 2
+  currentCoolDownTime: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  walkSpeed: 80
   bodyCollider: {fileID: 0}
+  bullet: {fileID: 6068167398742852559, guid: 243baf73bd2f8514eba832de1dc48529, type: 3}
 --- !u!212 &638891411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4708,13 +4711,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1220758944}
   - component: {fileID: 1220758943}
-  - component: {fileID: 1220758946}
   - component: {fileID: 1220758945}
   - component: {fileID: 1220758942}
   - component: {fileID: 1220758947}
   m_Layer: 0
   m_Name: ProtoPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4822,20 +4824,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1220758946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220758941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede613179a987d34389f9f459d253cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  jump: 0
 --- !u!114 &1220758947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4848,7 +4836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede613179a987d34389f9f459d253cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 30
   jump: 20
 --- !u!1 &1234424461
 GameObject:
