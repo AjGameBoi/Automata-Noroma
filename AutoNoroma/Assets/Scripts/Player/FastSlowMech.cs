@@ -11,16 +11,31 @@ public class FastSlowMech : MonoBehaviour
     public float radiusSize = 5f;
     public float fastSpeedMod;
     public float slowSpeedMod;
+    public float currNoroma;
+    public float maxNoromaB;
+    public float maxNoromaR;
+    public float NoromaBPenalty;
+    public float NoromaRPenalty;
+    public float NoromaStart = 0;
+    public float noromaDecay;
 
     public int fastDamageMod;
     public int slowDamageMod;
 
+    public GameObject NoromaB;
+    public GameObject NoromaR;
+    public GameObject NoromaGauge;
     public GameObject bluePowerUp;
     public GameObject redPowerUp;
+
+    public Transform noromaBarB;
+    public Transform noromaBarR;
 
     // Start is called before the first frame update
     void Start()
     {
+        noromaBarB = NoromaB.GetComponent<Transform>();
+        noromaBarR = NoromaR.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -28,6 +43,7 @@ public class FastSlowMech : MonoBehaviour
     {
         Fast();
         Slow();
+        Gauge();
     }
 
     void Fast()
@@ -61,13 +77,50 @@ public class FastSlowMech : MonoBehaviour
             {
                 Debug.Log("Modified a bullet");
                 bullet.GetComponent<bulletScript>().speed -= slowSpeedMod;
-                if(bullet.GetComponent<bulletScript>().speed <= 1f)
+                if (bullet.GetComponent<bulletScript>().speed <= 1f)
                 {
                     bullet.GetComponent<bulletScript>().speed = 1f;
                 }
                 bullet.GetComponent<bulletScript>().damage += slowDamageMod;
                 bullet.GetComponent<SpriteRenderer>().color = Color.red;
             }
+        }
+    }
+
+    void Gauge()
+    {
+        if ( currNoroma > 0) // Blue Decay
+        {
+            noromaBarB.localScale = new Vector2(currNoroma, 1);
+            currNoroma -= noromaDecay * Time.deltaTime;
+        }
+        else
+        {
+            noromaBarR.localScale = new Vector2(-currNoroma, 1);
+            currNoroma += noromaDecay * Time.deltaTime;
+        }
+
+        if(currNoroma > maxNoromaB)
+        {
+            Debug.Log("DamagedYourselfBNoroma");
+        }
+
+        if(currNoroma < maxNoromaR)
+        {
+            Debug.Log("DamagedYourselfRNoroma");
+            //damage yourself
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space)) // Noroma Blue
+        {
+            NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
+            currNoroma += NoromaBPenalty;
+        }
+
+        if (Input.GetKeyDown(KeyCode.V)) // Noroma Red
+        {
+            NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
+            currNoroma -= NoromaRPenalty;
         }
     }
 }
