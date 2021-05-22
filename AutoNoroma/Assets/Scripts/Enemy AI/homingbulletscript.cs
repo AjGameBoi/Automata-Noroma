@@ -35,13 +35,18 @@ public class homingbulletscript : MonoBehaviour
         }
     }
 
-    void DamagePlayer(int damage)
-    {
-        //Playerscript Health, -= damage
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //hit player, call DamagePlayer()
+        if(collision.tag == "Player")
+        {
+            var healthComponent = collision.GetComponent<PlayerController>();
+
+            if(healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+                Destroy(gameObject);
+                Debug.Log("Player is Hit");
+            }
+        }
     }
 }

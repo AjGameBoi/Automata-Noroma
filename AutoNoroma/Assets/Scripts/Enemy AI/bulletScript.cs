@@ -20,7 +20,7 @@ public class bulletScript : MonoBehaviour
         target = new Vector3(player.position.x, player.position.y, 0);
 
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, player.rotation, stepRotation);
-         transform.right = target - transform.position;
+        transform.right = target - transform.position;
     }
 
     // Update is called once per frame
@@ -35,8 +35,18 @@ public class bulletScript : MonoBehaviour
         }
     }
 
-    void DamagePlayer(int damage)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Playerscript Health, -= damage
+        if(collision.tag == "Player")
+        {
+            var healthComponent = collision.GetComponent<PlayerController>();
+
+            if(healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+                Destroy(gameObject);
+                Debug.Log("Player is Hit");
+            }
+        }
     }
 }
