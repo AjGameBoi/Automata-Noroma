@@ -3,23 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - Bullet
-=======
-  - Enemy
->>>>>>> 042e63dd5251e3d329e9280e2fdbfb0d1065401e
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Player
-  - Platform
-  - Bullet
-  - Enemy
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
