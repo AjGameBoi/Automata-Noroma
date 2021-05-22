@@ -40,11 +40,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isGrounded = false;
     public float swipeRange;
     public float tapRange;
+    private float holdTime = 1f;
+    private float acumTime = 0;
+    public FastSlowMech fastandslow;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
         playerLayer = LayerMask.NameToLayer("Player");
         platformLayer = LayerMask.NameToLayer("Platform");
+        fastandslow = FindObjectOfType<FastSlowMech>();
         currentHealth = maxHealth;
     }
 
@@ -138,7 +142,27 @@ public class PlayerController : MonoBehaviour
             {
                 movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
                 animator.SetFloat("Speed",0);
+                fastandslow.Fast();
                 //outputText.text = "Tap";
+            }
+        }
+        
+        //Hold to use Slow Power
+        if(Input.touchCount > 0)
+        {
+            acumTime += Input.GetTouch(0).deltaTime;
+
+            if(acumTime >= holdTime)
+            {
+                //Long tap
+                movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
+                animator.SetFloat("Speed",0);
+                fastandslow.Slow();
+            }
+
+            if(Input.GetTouch(0).phase == TouchPhase.Ended) 
+            {
+                acumTime = 0; 
             }
         }
     }

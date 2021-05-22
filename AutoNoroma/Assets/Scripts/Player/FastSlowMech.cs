@@ -30,26 +30,28 @@ public class FastSlowMech : MonoBehaviour
 
     public Transform noromaBarB;
     public Transform noromaBarR;
+    public PlayerController playerCont;
 
     // Start is called before the first frame update
     void Start()
     {
         noromaBarB = NoromaB.GetComponent<Transform>();
         noromaBarR = NoromaR.GetComponent<Transform>();
+        playerCont = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Fast();
-        Slow();
+        //Fast();
+        //Slow();
         Gauge();
     }
 
-    void Fast()
+    public void Fast()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Fast
-        {
+        //if (Input.GetKeyDown(KeyCode.Space)) // Fast
+        //{
             bluePowerUp.SetActive(false);
             bluePowerUp.SetActive(true);
             Debug.Log("Looking for bullets");
@@ -62,13 +64,13 @@ public class FastSlowMech : MonoBehaviour
                 bullet.GetComponent<bulletScript>().damage -= fastDamageMod;
                 bullet.GetComponent<SpriteRenderer>().color = Color.blue;
             }
-        }
+        //}
     }
 
-    void Slow()
+    public void Slow()
     {
-        if (Input.GetKeyDown(KeyCode.V)) // Fast
-        {
+        //if (Input.GetKeyDown(KeyCode.V)) // Fast
+        //{
             redPowerUp.SetActive(true);
             Debug.Log("Looking for bullets");
             bullets = Physics2D.OverlapCircleAll(transform.position, radiusSize, bulletLayer);
@@ -84,7 +86,7 @@ public class FastSlowMech : MonoBehaviour
                 bullet.GetComponent<bulletScript>().damage += slowDamageMod;
                 bullet.GetComponent<SpriteRenderer>().color = Color.red;
             }
-        }
+        //}
     }
 
     void Gauge()
