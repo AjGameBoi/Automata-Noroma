@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isGrounded = false;
     public float swipeRange;
     public float tapRange;
-    private float holdTime = 1f;
-    private float acumTime = 0;
+    //private float holdTime = 1f;
+    //private float acumTime = 0;
     public FastSlowMech fastandslow;
     void Start()
     {
@@ -142,13 +142,16 @@ public class PlayerController : MonoBehaviour
             {
                 movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
                 animator.SetFloat("Speed",0);
-                fastandslow.Fast();
+
+                //Need to make an if conditon for the parrying to happen
+                animator.SetTrigger("isParrying");
+                //fastandslow.Fast();
                 //outputText.text = "Tap";
             }
         }
         
         //Hold to use Slow Power
-        if(Input.touchCount > 0)
+        /*if(Input.touchCount > 0)
         {
             acumTime += Input.GetTouch(0).deltaTime;
 
@@ -164,7 +167,30 @@ public class PlayerController : MonoBehaviour
             {
                 acumTime = 0; 
             }
-        }
+        }*/
+    }
+    public void FastDeflect()
+    {
+        movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
+        animator.SetFloat("Speed",0);
+        fastandslow.Fast();
+    }
+
+    public void SlowDeflect()
+    {
+        movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
+        animator.SetFloat("Speed",0);
+        fastandslow.Slow();
+    }
+
+    public void callParry()
+    {
+        GameObject.Find("ParryHitBox").GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    public void stopParry()
+    {
+        GameObject.Find("ParryHitBox").GetComponent<BoxCollider2D>().enabled = false;
     }
 
     void MoveCharacter(Vector2 direction)
