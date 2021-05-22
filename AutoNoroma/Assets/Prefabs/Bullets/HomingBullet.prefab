@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9144705784715137364}
   - component: {fileID: 9144705784715137365}
   - component: {fileID: 9144705784715137366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HomingBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
