@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     public Text outputText;
     private Rigidbody2D playerRB;
-    public float speed;
+    public Animator animator;
+    [SerializeField] private Transform groundCheckCollider;
+    [SerializeField] LayerMask groundLayer;
+    const float groundCheckRadius = 0.2f;
+    [SerializeField] public float speed;
     public float slowSpeed;
     public float jumpForce;
     private Vector2 movement;
@@ -19,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 endTouchPosition;
 
     private bool stopTouch = false;
+    [SerializeField] private bool isGrounded = false;
 
     public float swipeRange;
     public float tapRange;
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        GroundCheck();
         MoveCharacter(movement);
         JumpIfAllowed();
     }
@@ -52,23 +58,29 @@ public class PlayerController : MonoBehaviour
             currentTouchPosition = Input.GetTouch(0).position;
             Vector2 Distance = currentTouchPosition - startTouchPosition;
 
+            Vector2 characterScale = transform.localScale;
             if (!stopTouch)
             {
                 if (Distance.x < -swipeRange)
                 {
+                    characterScale.x = -5;
                     movement = new Vector2(-1, 0);
+                    animator.SetFloat("Speed",1);
                     outputText.text = "Left";
                     stopTouch = true;
                 }
                 else if (Distance.x > swipeRange)
                 {
+                    characterScale.x = 5;
                     movement = new Vector2(1, 0);
+                    animator.SetFloat("Speed",1);
                     outputText.text = "Right";
                     stopTouch = true;
                 }
                 else if (Distance.y > swipeRange && playerRB.velocity.y == 0)
                 {
                     jumpAllowed = true;
+                    animator.SetBool("isJumping" , true);
                     outputText.text = "Jump";
                     stopTouch = true;
                 }
@@ -79,6 +91,7 @@ public class PlayerController : MonoBehaviour
                     stopTouch = true;
                 }
             }
+            transform.localScale = characterScale;
 
             if (playerRB.velocity.y > 0)
             {
@@ -90,6 +103,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        animator.SetFloat("ySpeed", playerRB.velocity.y);
+
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             stopTouch = false;
@@ -98,7 +113,8 @@ public class PlayerController : MonoBehaviour
 
             if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange )
             {
-                movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), playerRB.velocity.y);
+                movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
+                animator.SetFloat("Speed",0);
                 outputText.text = "Tap";
             }
         }
@@ -107,6 +123,18 @@ public class PlayerController : MonoBehaviour
     void MoveCharacter(Vector2 direction)
     {
         playerRB.AddForce(direction * speed);
+    }
+    void GroundCheck()
+    {
+        isGrounded = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
+        if (colliders.Length > 0)
+        {
+            isGrounded = true;
+        }
+
+        // If "grounded", the jump bool is disabled
+        animator.SetBool("isJumping", !isGrounded);
     }
     IEnumerator JumpOff()
     {
