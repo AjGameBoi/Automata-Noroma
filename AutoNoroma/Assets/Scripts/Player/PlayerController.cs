@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     //public Text outputText;
+    //Player Movement
     private Rigidbody2D playerRB;
     public Animator animator;
+    public Animator imageAnimator;
     [SerializeField] private Transform groundCheckCollider;
     [SerializeField] LayerMask groundLayer;
     const float groundCheckRadius = 0.2f;
@@ -18,13 +21,23 @@ public class PlayerController : MonoBehaviour
     private int playerLayer, platformLayer;
     private bool jumpAllowed = false;
     private bool jumpOffCouroutineIsRunning = false;
+
+    //Player Health
+    public int maxHealth = 3;
+    public int currentHealth;
+
+    //Delay After Death
+    private float delayBeforeLoading = 1.5f;
+    private float timeElapsed;
+    [SerializeField] private bool isDead;
+    
+    //Mobile Controls
     private Vector2 startTouchPosition;
     private Vector2 currentTouchPosition;
     private Vector2 endTouchPosition;
 
     private bool stopTouch = false;
     [SerializeField] private bool isGrounded = false;
-
     public float swipeRange;
     public float tapRange;
     void Start()
@@ -32,10 +45,20 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerLayer = LayerMask.NameToLayer("Player");
         platformLayer = LayerMask.NameToLayer("Platform");
+        currentHealth = maxHealth;
     }
 
     void Update()
     {
+        if(isDead == true)
+        {
+            timeElapsed += Time.deltaTime;
+
+            if (timeElapsed > delayBeforeLoading)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
+        }
         Swipe();
     }
 
@@ -155,6 +178,31 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.AddForce (Vector2.up * jumpForce);
             jumpAllowed = false;
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth == 3)
+        {
+            imageAnimator.SetFloat("Health", 3);
+        }
+        else if (currentHealth == 2)
+        {
+            imageAnimator.SetFloat("Health", 2);
+        }
+        else if (currentHealth == 1)
+        {
+            imageAnimator.SetFloat("Health", 1);
+        }
+        else if (currentHealth == 0)
+        {
+            animator.SetBool("isDead", true);
+            playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            isDead = true;
+            imageAnimator.SetFloat("Health", 0);
         }
     }
 
