@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Text outputText;
+    //public Text outputText;
     private Rigidbody2D playerRB;
     public Animator animator;
     [SerializeField] private Transform groundCheckCollider;
@@ -63,31 +63,31 @@ public class PlayerController : MonoBehaviour
             {
                 if (Distance.x < -swipeRange)
                 {
-                    characterScale.x = -5;
+                    characterScale.x = -3.2f;
                     movement = new Vector2(-1, 0);
                     animator.SetFloat("Speed",1);
-                    outputText.text = "Left";
+                    //outputText.text = "Left";
                     stopTouch = true;
                 }
                 else if (Distance.x > swipeRange)
                 {
-                    characterScale.x = 5;
+                    characterScale.x = 3.2f;
                     movement = new Vector2(1, 0);
                     animator.SetFloat("Speed",1);
-                    outputText.text = "Right";
+                    //outputText.text = "Right";
                     stopTouch = true;
                 }
                 else if (Distance.y > swipeRange && playerRB.velocity.y == 0)
                 {
                     jumpAllowed = true;
                     animator.SetBool("isJumping" , true);
-                    outputText.text = "Jump";
+                    //outputText.text = "Jump";
                     stopTouch = true;
                 }
                 else if (Distance.y < -swipeRange)
                 {
                     StartCoroutine ("JumpOff");
-                    outputText.text = "Down";
+                    //outputText.text = "Down";
                     stopTouch = true;
                 }
             }
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
             {
                 movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
                 animator.SetFloat("Speed",0);
-                outputText.text = "Tap";
+                //outputText.text = "Tap";
             }
         }
     }
@@ -129,6 +129,11 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
         if (colliders.Length > 0)
+        {
+            isGrounded = true;
+        }
+        Collider2D[] platformcolliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, platformLayer);
+        if (platformcolliders.Length > 0)
         {
             isGrounded = true;
         }
