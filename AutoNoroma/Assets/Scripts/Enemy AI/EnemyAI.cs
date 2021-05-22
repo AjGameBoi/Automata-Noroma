@@ -7,7 +7,9 @@ public class EnemyAI : MonoBehaviour
 {
     public float jumpForce;
     public float walkSpeed;
-    public float cooldownRate = 2.0f;
+    public float minCooldown = 2.0f;
+    public float maxCooldown = 8.0f ;
+    public float cooldownRate;
     [SerializeField]float currentCoolDownTime;
 
     Transform player;
@@ -37,6 +39,7 @@ public class EnemyAI : MonoBehaviour
         groundCheckPos = GetComponentInChildren<Transform>();
         mustPatrol = true;
 
+        cooldownRate = Random.Range(minCooldown, maxCooldown);
         currentCoolDownTime = cooldownRate;
     }
 
@@ -86,6 +89,7 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
+        cooldownRate = Random.Range(minCooldown, maxCooldown);
         currentCoolDownTime -= Time.deltaTime;
         if (currentCoolDownTime < 0)
         {
