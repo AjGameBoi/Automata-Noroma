@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
 
     //Delay After Death
-    private float delayBeforeLoading = 1.5f;
+    private float delayBeforeLoading = 1.4f;
     private float timeElapsed;
     [SerializeField] private bool isDead;
     
