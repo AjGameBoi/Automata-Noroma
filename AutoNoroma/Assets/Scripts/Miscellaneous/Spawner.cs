@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject spawnee;
+    public GameObject[] spawnee;
     public bool stopSpawning = false;
-    public float spawnTime;
-    public float spawnDelay;
+    public float spawnTime = 0.5f;
+    public float minTime = 1.5f;
+    public float maxTime = 5f;
+    int objectIndex;
+
+    public int maxEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        //RandomSpawn();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Instantiate(spawnee, transform.position, transform.rotation);
-        if(stopSpawning)
+        /*var enemyCount : int = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        if (enemyCount < maxEnemies)
         {
-            CancelInvoke("SpawnObject");
-        }
+            Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        }*/
+    }
+        
+    void RandomSpawn()
+    {
+        float randomTime = Random.Range(minTime, maxTime);
+
+        objectIndex = Random.Range(0, spawnee.Length);
+
+        Instantiate(spawnee[objectIndex], transform.position, transform.rotation);
+
+        Invoke("RandomSpawn", randomTime);
     }
 }
