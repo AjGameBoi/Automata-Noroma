@@ -8903,6 +8903,7 @@ GameObject:
   - component: {fileID: 2114114135}
   - component: {fileID: 2114114134}
   - component: {fileID: 2114114133}
+  - component: {fileID: 2114114139}
   - component: {fileID: 2114114132}
   m_Layer: 6
   m_Name: Player
@@ -8950,7 +8951,7 @@ MonoBehaviour:
     m_Bits: 136
   speed: 10
   slowSpeed: 0.3
-  jumpForce: 500
+  jumpForce: 600
   maxHealth: 3
   currentHealth: 0
   isDead: 0
@@ -9088,6 +9089,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114114139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114114131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97e8b9855c3e1447b031903c6f8fc51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  radiusSize: 5
+  fastSpeedMod: 0
+  slowSpeedMod: 0
+  currNoroma: 0
+  maxNoromaB: 0
+  maxNoromaR: 0
+  NoromaBPenalty: 0
+  NoromaRPenalty: 0
+  NoromaStart: 0
+  noromaDecay: 0
+  fastDamageMod: 0
+  slowDamageMod: 0
+  NoromaB: {fileID: 0}
+  NoromaR: {fileID: 0}
+  NoromaGauge: {fileID: 0}
+  bluePowerUp: {fileID: 0}
+  redPowerUp: {fileID: 0}
+  noromaBarB: {fileID: 0}
+  noromaBarR: {fileID: 0}
 --- !u!1 &2123663244
 GameObject:
   m_ObjectHideFlags: 0
