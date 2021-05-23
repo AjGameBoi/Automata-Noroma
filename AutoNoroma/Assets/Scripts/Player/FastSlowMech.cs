@@ -89,7 +89,7 @@ public class FastSlowMech : MonoBehaviour
         //}
     }
 
-    void Gauge()
+    public void Gauge()
     {
         if ( currNoroma > 0) // Blue Decay
         {
@@ -113,7 +113,7 @@ public class FastSlowMech : MonoBehaviour
             //damage yourself
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)) // Noroma Blue
+        /*if(Input.GetKeyDown(KeyCode.Space)) // Noroma Blue
         {
             NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
             currNoroma += NoromaBPenalty;
@@ -123,6 +123,6 @@ public class FastSlowMech : MonoBehaviour
         {
             NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
             currNoroma -= NoromaRPenalty;
-        }
+        }*/
     }
 }

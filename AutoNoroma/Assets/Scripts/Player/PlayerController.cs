@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         Swipe();
+        fastandslow.Gauge();
     }
 
     private void FixedUpdate() 
@@ -174,6 +175,8 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
         animator.SetFloat("Speed",0);
         fastandslow.Fast();
+        fastandslow.NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
+        fastandslow.currNoroma += fastandslow.NoromaBPenalty;
     }
 
     public void SlowDeflect()
@@ -181,6 +184,8 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(slowSpeed *Mathf.Sign(playerRB.velocity.x), 0.5f);
         animator.SetFloat("Speed",0);
         fastandslow.Slow();
+        fastandslow.NoromaGauge.GetComponent<Animator>().SetTrigger("NoromaUsed");
+        fastandslow.currNoroma -= fastandslow.NoromaRPenalty;
     }
 
     public void callParry()
