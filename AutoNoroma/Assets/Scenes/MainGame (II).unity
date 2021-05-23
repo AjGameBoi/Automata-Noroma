@@ -8762,115 +8762,115 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 9.120359}
   m_EdgeRadius: 0
---- !u!1001 &352502599200728297
+--- !u!1001 &2546426194259866174
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 352502599522854372, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: m_Name
-      value: Player (Colored)
-      objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854374, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaB
-      value: 
-      objectReference: {fileID: 8455032630547549602}
-    - target: {fileID: 352502599522854374, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaR
-      value: 
-      objectReference: {fileID: 8455032630547549601}
-    - target: {fileID: 352502599522854374, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: redPowerUp
-      value: 
-      objectReference: {fileID: 8455032630547549597}
-    - target: {fileID: 352502599522854374, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaGauge
-      value: 
-      objectReference: {fileID: 8455032630547549600}
-    - target: {fileID: 352502599522854374, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: bluePowerUp
-      value: 
-      objectReference: {fileID: 8455032630547549599}
-    - target: {fileID: 352502599522854392, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 8455032630547549603}
-    - target: {fileID: 352502599522854392, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: imageAnimator
-      value: 
-      objectReference: {fileID: 2033561463}
-    - target: {fileID: 352502599522854392, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: groundCheckCollider
-      value: 
-      objectReference: {fileID: 8455032630547549598}
-    - target: {fileID: 352502599522854393, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaB
-      value: 
-      objectReference: {fileID: 8455032630547549602}
-    - target: {fileID: 352502599522854393, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaR
-      value: 
-      objectReference: {fileID: 8455032630547549601}
-    - target: {fileID: 352502599522854393, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: redPowerUp
-      value: 
-      objectReference: {fileID: 8455032630547549597}
-    - target: {fileID: 352502599522854393, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: NoromaGauge
-      value: 
-      objectReference: {fileID: 8455032630547549600}
-    - target: {fileID: 352502599522854393, guid: c23b749667b813b459ba7480161cdafb, type: 3}
-      propertyPath: bluePowerUp
-      value: 
-      objectReference: {fileID: 8455032630547549599}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.0502024
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.997
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 352502599522854399, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+    - target: {fileID: 2546426194982548264, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2546426194982548270, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaB
+      value: 
+      objectReference: {fileID: 8455032630547549602}
+    - target: {fileID: 2546426194982548270, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaR
+      value: 
+      objectReference: {fileID: 8455032630547549601}
+    - target: {fileID: 2546426194982548270, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: redPowerUp
+      value: 
+      objectReference: {fileID: 8455032630547549597}
+    - target: {fileID: 2546426194982548270, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaGauge
+      value: 
+      objectReference: {fileID: 8455032630547549600}
+    - target: {fileID: 2546426194982548270, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: bluePowerUp
+      value: 
+      objectReference: {fileID: 8455032630547549599}
+    - target: {fileID: 2546426194982548271, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 8455032630547549603}
+    - target: {fileID: 2546426194982548271, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: imageAnimator
+      value: 
+      objectReference: {fileID: 2033561463}
+    - target: {fileID: 2546426194982548271, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: groundCheckCollider
+      value: 
+      objectReference: {fileID: 8455032630547549598}
+    - target: {fileID: 2546426194982548273, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaB
+      value: 
+      objectReference: {fileID: 8455032630547549602}
+    - target: {fileID: 2546426194982548273, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaR
+      value: 
+      objectReference: {fileID: 8455032630547549601}
+    - target: {fileID: 2546426194982548273, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: redPowerUp
+      value: 
+      objectReference: {fileID: 8455032630547549597}
+    - target: {fileID: 2546426194982548273, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: NoromaGauge
+      value: 
+      objectReference: {fileID: 8455032630547549600}
+    - target: {fileID: 2546426194982548273, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: bluePowerUp
+      value: 
+      objectReference: {fileID: 8455032630547549599}
+    - target: {fileID: 2546426194982548275, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
+      propertyPath: m_Name
+      value: Player (Colored)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c23b749667b813b459ba7480161cdafb, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 586e0fa0b09aa9542bb7bd3809f22188, type: 3}
 --- !u!1001 &7349335269833431775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9034,6 +9034,10 @@ PrefabInstance:
     - target: {fileID: 8455032628500586447, guid: 3d32a82109df99b46998ef496b08593c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455032628500586447, guid: 3d32a82109df99b46998ef496b08593c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d32a82109df99b46998ef496b08593c, type: 3}
