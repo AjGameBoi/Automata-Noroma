@@ -165,7 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edddc663aeac7d248a741de92dee8330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  fov: {fileID: 0}
+  lifetime: 12
   speed: 4.25
   stepRotation: 54.96
   damage: 1
+  isReflected: 0
+  currentCounter: 0
+  maxCounter: 2
+  isHoming: 0
+  listSize: 0
