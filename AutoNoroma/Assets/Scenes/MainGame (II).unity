@@ -3970,7 +3970,7 @@ GameObject:
   - component: {fileID: 638891414}
   m_Layer: 9
   m_Name: EnemyAIPr
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4123,6 +4123,8 @@ MonoBehaviour:
   maxCooldown: 8
   cooldownRate: 2
   currentCoolDownTime: 0
+  maxHealth: 1
+  currentHealth: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

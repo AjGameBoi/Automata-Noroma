@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]float currentCoolDownTime;
 
     Transform player;
+    public int maxHealth = 1;
+    public int currentHealth;
 
     public LayerMask groundLayer;
 
@@ -41,6 +43,7 @@ public class EnemyAI : MonoBehaviour
 
         cooldownRate = Random.Range(minCooldown, maxCooldown);
         currentCoolDownTime = cooldownRate;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -95,6 +98,15 @@ public class EnemyAI : MonoBehaviour
         {
             Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z));
             currentCoolDownTime = cooldownRate;
+        }
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        
+        if (currentHealth == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

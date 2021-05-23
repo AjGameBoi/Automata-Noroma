@@ -48,5 +48,17 @@ public class bulletScript : MonoBehaviour
                 Debug.Log("Player is Hit");
             }
         }
+
+        if(collision.tag == "Enemy")
+        {
+            var healthComponent = collision.GetComponent<EnemyAI>();
+
+            if(healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+                Destroy(gameObject);
+                Debug.Log("Enemy is Hit");
+            }
+        }
     }
 }
