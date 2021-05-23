@@ -8,6 +8,7 @@ public class BossCript : MonoBehaviour
     public GameObject normalBullet;
     public GameObject[] spawnPoints;
     public GameObject eyeSpawn;
+    public GameObject[] bossPieces;
 
     Animator anim;
 
@@ -60,5 +61,13 @@ public class BossCript : MonoBehaviour
                 currentCoolDownTime = cooldownRate;
         }
 
+    }
+
+    void BossDeath()
+    {
+        if (bossPieces.Length <= 0)
+        {
+            //u win
+        }
     }
 }
