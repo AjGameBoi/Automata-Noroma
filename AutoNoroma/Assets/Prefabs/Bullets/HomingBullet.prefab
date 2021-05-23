@@ -99,10 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155149a46dd69f84d8091047dace953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  fov: {fileID: 0}
+  lifetime: 12
   speed: 3
   stepRotation: 10
   damage: 1
+  currentCounter: 0
+  maxCounter: 2
+  isHoming: 1
 --- !u!95 &9144705784715137366
 Animator:
   serializedVersion: 3
